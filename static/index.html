@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norwegian Postcode Geocoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #status {
+            margin-top: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Norwegian Postcode Geocoder</h1>
+    <p>Paste Norwegian postcodes (one per line) and click "Geocode" to download a CSV with coordinates.</p>
+    <textarea id="postcodes" placeholder="Enter postcodes, one per line (e.g., 0150)"></textarea>
+    <button onclick="geocodePostcodes()">Geocode</button>
+    <div id="status"></div>
+
+    <script>
+        async function geocodePostcodes() {
+            const postcodes = document.getElementById('postcodes').value.split('\n').map(p => p.trim()).filter(p => p);
+            if (postcodes.length === 0) {
+                document.getElementById('status').textContent = 'Please enter at least one postcode.';
+                return;
+            }
+
+            document.getElementById('status').textContent = 'Processing... This may take a moment due to API rate limits.';
+
+            try {
+                const response = await fetch('/geocode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ postcodes }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to process postcodes.');
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'postcode_coordinates.csv';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+
+                document.getElementById('status').textContent = 'CSV downloaded successfully!';
+            } catch (error) {
+                document.getElementById('status').textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
