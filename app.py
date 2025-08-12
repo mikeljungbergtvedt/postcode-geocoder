@@ -1,4 +1,5 @@
 from flask import Flask, request, send_file
+from flask_cors import CORS
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderQuotaExceeded
 import pandas as pd
@@ -6,6 +7,8 @@ import time
 import io
 
 app = Flask(__name__)
+CORS(app)
+
 geolocator = Nominatim(user_agent="norwegian_postcode_webapp")
 
 @app.route('/')
@@ -30,7 +33,7 @@ def geocode():
                     'Latitude': location.latitude if location else None,
                     'Longitude': location.longitude if location else None
                 })
-                time.sleep(1)  # Respect Nominatim's rate limit
+                time.sleep(1)
             except (GeocoderTimedOut, GeocoderQuotaExceeded) as e:
                 results.append({
                     'Postcode': postcode,
@@ -38,7 +41,6 @@ def geocode():
                     'Longitude': None
                 })
 
-        # Create DataFrame and save to CSV
         df = pd.DataFrame(results)
         output = io.StringIO()
         df.to_csv(output, index=False)
