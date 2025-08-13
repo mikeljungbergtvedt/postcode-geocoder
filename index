@@ -28,6 +28,27 @@
             font-size: 2.5em;
             font-weight: 700;
         }
+        nav {
+            background-color: #0048a0;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        nav a:hover {
+            background-color: #E30613;
+            transform: scale(1.05);
+        }
+        nav a.active {
+            background-color: #E30613;
+        }
         .nav-container {
             max-width: 1200px;
             margin: 20px auto;
@@ -39,7 +60,7 @@
             background-size: cover;
             background-position: center;
             background-opacity: 0.5;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white for readability */
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
         }
         .nav-container a {
@@ -51,10 +72,28 @@
             text-align: center;
             font-size: 1.2em;
             font-weight: 700;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
         .nav-container a:hover {
             background-color: #E30613;
+            transform: scale(1.05);
+        }
+        .map-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            height: 80vh;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .map-container div {
+            font-size: 10px;
+            text-align: center;
         }
         footer {
             background-color: #003087;
@@ -66,12 +105,28 @@
             width: 100%;
             font-size: 0.9em;
         }
+        footer a {
+            color: #00A4D6;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 600px) {
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
             .nav-container {
                 grid-template-columns: 1fr;
             }
             h1 {
                 font-size: 1.8em;
+            }
+            .map-container {
+                margin: 10px;
+                padding: 10px;
+                height: 70vh;
             }
         }
     </style>
@@ -81,15 +136,28 @@
         <img src="logo.png" alt="Autoringen Logo" class="logo">
         <h1>Heatmaps</h1>
     </header>
+    <nav>
+        <a href="index.html" class="active">Norge</a>
+        <a href="ski.html">Ski</a>
+        <a href="skedsmo.html">Skedsmo</a>
+        <a href="trondheim.html">Trondheim</a>
+        <a href="bergen.html">Bergen</a>
+        <a href="stavanger.html">Stavanger</a>
+    </nav>
     <div class="nav-container">
+        <a href="index.html">Heatmap Norge</a>
         <a href="ski.html">Heatmap Ski</a>
         <a href="skedsmo.html">Heatmap Skedsmo</a>
         <a href="trondheim.html">Heatmap Trondheim</a>
         <a href="bergen.html">Heatmap Bergen</a>
         <a href="stavanger.html">Heatmap Stavanger</a>
     </div>
+    <div class="map-container">
+        <iframe src="https://app.mapline.com/map/map_7de7f24/ZHc5TjZNQzRhbm9uN01hejE1NG44Vk5iSWZybS8vbVROSW5oSn" style="width:100%;height:100%;" allow="geolocation *"></iframe>
+        <div><a href="https://mapline.com" target="_blank">Mapping by Mapline</a></div>
+    </div>
     <footer>
-        <p>Powered by <a href="https://mapline.com" target="_blank" style="color: #00A4D6;">Mapline</a></p>
+        <p>Powered by <a href="https://mapline.com" target="_blank">Mapline</a> | <a href="https://www.autoringen.no" target="_blank">Autoringen</a></p>
     </footer>
 </body>
 </html>
