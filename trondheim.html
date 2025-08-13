@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heatmap Trondheim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #003087;
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+        }
+        header img.logo {
+            max-width: 150px;
+            height: auto;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #00A4D6;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #E30613;
+        }
+        .map-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        .map-container div {
+            font-size: 10px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .map-container {
+                margin: 10px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Autoringen Logo" class="logo">
+        <h1>Heatmap Trondheim</h1>
+    </header>
+    <div style="text-align: center;">
+        <a href="index.html" class="back-button">Back to Home</a>
+    </div>
+    <div class="map-container">
+        <iframe src="https://app.mapline.com/map/map_3a6f7288/T24rY0t2M2tpQkJ2OXJ1R2V0dWxQUnA3Zy9Eb2dldWk2OW9peX" style="width:100%;height:600px;" allow="geolocation *"></iframe>
+        <div><a href="https://mapline.com" target="_blank">Mapping by Mapline</a></div>
+    </div>
+</body>
+</html>
