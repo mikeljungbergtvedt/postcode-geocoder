@@ -3,45 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer Maps Landing Page</title>
+    <title>Heatmaps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            padding: 0;
             background-color: #f4f4f4;
-        }
-        h1 {
             color: #333;
         }
+        header {
+            background-color: #003087;
+            color: #FFFFFF;
+            padding: 20px;
+            text-align: center;
+        }
+        header img.logo {
+            max-width: 150px;
+            height: auto;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
         .nav-container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Norway_map_modern.png/800px-Norway_map_modern.png');
+            background-size: cover;
+            background-position: center;
+            background-opacity: 0.5;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white for readability */
+            border-radius: 8px;
         }
         .nav-container a {
-            display: block;
-            margin: 10px 0;
-            padding: 15px;
-            background-color: #007bff;
-            color: white;
+            background-color: #00A4D6;
+            color: #FFFFFF;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: background-color 0.3s;
         }
         .nav-container a:hover {
-            background-color: #0056b3;
+            background-color: #E30613;
+        }
+        footer {
+            background-color: #003087;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+        }
+        @media (max-width: 600px) {
+            .nav-container {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Buyer Location Maps</h1>
+    <header>
+        <img src="logo.png" alt="Autoringen Logo" class="logo">
+        <h1>Heatmaps</h1>
+    </header>
     <div class="nav-container">
-        <a href="ski.html">Ski Buyer Map</a>
-        <a href="skedsmo.html">Skedsmo (Lillestrøm) Buyer Map</a>
-        <a href="trondheim.html">Trondheim Buyer Map</a>
-        <a href="bergen.html">Bergen Buyer Map</a>
-        <a href="stavanger.html">Stavanger Buyer Map</a>
+        <a href="ski.html">Heatmap Ski</a>
+        <a href="skedsmo.html">Heatmap Skedsmo</a>
+        <a href="trondheim.html">Heatmap Trondheim</a>
+        <a href="bergen.html">Heatmap Bergen</a>
+        <a href="stavanger.html">Heatmap Stavanger</a>
     </div>
+    <footer>
+        <p>Powered by <a href="https://mapline.com" target="_blank" style="color: #00A4D6;">Mapline</a></p>
+    </footer>
 </body>
 </html>
