@@ -1,37 +1,47 @@
-import pandas as pd
-from googlemaps import Client
-
-# Replace with your API key
-API_KEY = 'YOUR_API_KEY'
-
-# Load your Ark1 data (assuming it's in a CSV or Excel file)
-# For demo, hardcode a sample DataFrame; replace with pd.read_excel('Ski YTD.xlsx', sheet_name='Ark1')
-data = pd.DataFrame({
-    'Kjøper': ['SKEDSMO BIL HAMA', 'VIKING AUTO AS'],
-    'Postnr.': ['2000', '1188']
-})
-
-# Initialize Google Maps client
-gmaps = Client(key=API_KEY)
-
-# Function to geocode a postal code
-def geocode_postnr(postnr):
-    if not postnr or postnr == '':  # Skip missing/invalid
-        return None, None
-    try:
-        result = gmaps.geocode(f"{postnr}, Norway")
-        if result:
-            location = result[0]['geometry']['location']
-            return location['lat'], location['lng']
-        else:
-            return None, None
-    except Exception as e:
-        print(f"Error geocoding {postnr}: {e}")
-        return None, None
-
-# Add latitude and longitude columns
-data['Latitude'], data['Longitude'] = zip(*data['Postnr.'].apply(geocode_postnr))
-
-# Save the updated data
-data.to_excel('Ski YTD_updated.xlsx', index=False)
-print(data)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Maps Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .nav-container a {
+            display: block;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .nav-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buyer Location Maps</h1>
+    <div class="nav-container">
+        <a href="ski.html">Ski Buyer Map</a>
+        <a href="skedsmo.html">Skedsmo (Lillestrøm) Buyer Map</a>
+        <a href="trondheim.html">Trondheim Buyer Map</a>
+        <a href="bergen.html">Bergen Buyer Map</a>
+        <a href="stavanger.html">Stavanger Buyer Map</a>
+    </div>
+</body>
+</html>
