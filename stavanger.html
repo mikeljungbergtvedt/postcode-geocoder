@@ -27,19 +27,27 @@
             font-size: 2em;
             font-weight: 700;
         }
-        .back-button {
+        .nav-bar {
+            max-width: 1200px;
+            margin: 10px auto;
+            text-align: center;
+        }
+        .nav-bar a {
             display: inline-block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #00A4D6;
             color: #FFFFFF;
+            background-color: #00A4D6;
             text-decoration: none;
+            padding: 10px 20px;
+            margin: 5px;
             border-radius: 5px;
             font-weight: 700;
-            text-align: center;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
-        .back-button:hover {
+        .nav-bar a:hover {
+            background-color: #E30613;
+            transform: scale(1.05);
+        }
+        .nav-bar a.active {
             background-color: #E30613;
         }
         .map-container {
@@ -48,23 +56,47 @@
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
+            height: 80vh;
         }
         .map-container iframe {
             width: 100%;
-            height: 600px;
+            height: 100%;
             border: none;
         }
         .map-container div {
             font-size: 10px;
             text-align: center;
         }
+        footer {
+            background-color: #003087;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #00A4D6;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 600px) {
+            .nav-bar a {
+                display: block;
+                margin: 5px auto;
+                width: 80%;
+            }
             h1 {
                 font-size: 1.5em;
             }
             .map-container {
                 margin: 10px;
                 padding: 10px;
+                height: 70vh;
             }
         }
     </style>
@@ -74,12 +106,20 @@
         <img src="logo.png" alt="Autoringen Logo" class="logo">
         <h1>Heatmap Stavanger</h1>
     </header>
-    <div style="text-align: center;">
-        <a href="index.html" class="back-button">Back to Home</a>
+    <div class="nav-bar">
+        <a href="index.html">Norge</a>
+        <a href="ski.html">Ski</a>
+        <a href="skedsmo.html">Skedsmo</a>
+        <a href="trondheim.html">Trondheim</a>
+        <a href="bergen.html">Bergen</a>
+        <a href="stavanger.html" class="active">Stavanger</a>
     </div>
     <div class="map-container">
-        <iframe src="https://app.mapline.com/map/map_4103b66f/SVIwMFVUK3I3dUVOSkM5Q0Q4aXdXZkoyWUJ0TW1naHBxUFpEcn" style="width:100%;height:600px;" allow="geolocation *"></iframe>
+        <iframe src="https://app.mapline.com/map/map_4103b66f/SVIwMFVUK3I3dUVOSkM5Q0Q4aXdXZkoyWUJ0TW1naHBxUFpEcn" style="width:100%;height:100%;" allow="geolocation *"></iframe>
         <div><a href="https://mapline.com" target="_blank">Mapping by Mapline</a></div>
     </div>
+    <footer>
+        <p>Powered by <a href="https://mapline.com" target="_blank">Mapline</a> | <a href="https://www.autoringen.no" target="_blank">Autoringen</a></p>
+    </footer>
 </body>
 </html>
