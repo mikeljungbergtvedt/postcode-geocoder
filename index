@@ -28,55 +28,28 @@
             font-size: 2.5em;
             font-weight: 700;
         }
-        nav {
-            background-color: #0048a0;
-            padding: 10px;
+        .nav-bar {
+            max-width: 1200px;
+            margin: 10px auto;
             text-align: center;
         }
-        nav a {
+        .nav-bar a {
+            display: inline-block;
             color: #FFFFFF;
+            background-color: #00A4D6;
             text-decoration: none;
             padding: 10px 20px;
-            margin: 0 5px;
+            margin: 5px;
             border-radius: 5px;
             font-weight: 700;
             transition: background-color 0.3s, transform 0.2s;
         }
-        nav a:hover {
+        .nav-bar a:hover {
             background-color: #E30613;
             transform: scale(1.05);
         }
-        nav a.active {
+        .nav-bar a.active {
             background-color: #E30613;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Norway_map_modern.png/800px-Norway_map_modern.png');
-            background-size: cover;
-            background-position: center;
-            background-opacity: 0.5;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-        }
-        .nav-container a {
-            background-color: #00A4D6;
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: 700;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .nav-container a:hover {
-            background-color: #E30613;
-            transform: scale(1.05);
         }
         .map-container {
             max-width: 1200px;
@@ -113,12 +86,10 @@
             text-decoration: underline;
         }
         @media (max-width: 600px) {
-            nav a {
+            .nav-bar a {
                 display: block;
-                margin: 5px 0;
-            }
-            .nav-container {
-                grid-template-columns: 1fr;
+                margin: 5px auto;
+                width: 80%;
             }
             h1 {
                 font-size: 1.8em;
@@ -136,21 +107,13 @@
         <img src="logo.png" alt="Autoringen Logo" class="logo">
         <h1>Heatmaps</h1>
     </header>
-    <nav>
+    <div class="nav-bar">
         <a href="index.html" class="active">Norge</a>
         <a href="ski.html">Ski</a>
         <a href="skedsmo.html">Skedsmo</a>
         <a href="trondheim.html">Trondheim</a>
         <a href="bergen.html">Bergen</a>
         <a href="stavanger.html">Stavanger</a>
-    </nav>
-    <div class="nav-container">
-        <a href="index.html">Heatmap Norge</a>
-        <a href="ski.html">Heatmap Ski</a>
-        <a href="skedsmo.html">Heatmap Skedsmo</a>
-        <a href="trondheim.html">Heatmap Trondheim</a>
-        <a href="bergen.html">Heatmap Bergen</a>
-        <a href="stavanger.html">Heatmap Stavanger</a>
     </div>
     <div class="map-container">
         <iframe src="https://app.mapline.com/map/map_7de7f24/ZHc5TjZNQzRhbm9uN01hejE1NG44Vk5iSWZybS8vbVROSW5oSn" style="width:100%;height:100%;" allow="geolocation *"></iframe>
