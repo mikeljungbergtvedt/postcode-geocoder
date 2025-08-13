@@ -1,0 +1,37 @@
+import pandas as pd
+from googlemaps import Client
+
+# Replace with your API key
+API_KEY = 'YOUR_API_KEY'
+
+# Load your Ark1 data (assuming it's in a CSV or Excel file)
+# For demo, hardcode a sample DataFrame; replace with pd.read_excel('Ski YTD.xlsx', sheet_name='Ark1')
+data = pd.DataFrame({
+    'Kjøper': ['SKEDSMO BIL HAMA', 'VIKING AUTO AS'],
+    'Postnr.': ['2000', '1188']
+})
+
+# Initialize Google Maps client
+gmaps = Client(key=API_KEY)
+
+# Function to geocode a postal code
+def geocode_postnr(postnr):
+    if not postnr or postnr == '':  # Skip missing/invalid
+        return None, None
+    try:
+        result = gmaps.geocode(f"{postnr}, Norway")
+        if result:
+            location = result[0]['geometry']['location']
+            return location['lat'], location['lng']
+        else:
+            return None, None
+    except Exception as e:
+        print(f"Error geocoding {postnr}: {e}")
+        return None, None
+
+# Add latitude and longitude columns
+data['Latitude'], data['Longitude'] = zip(*data['Postnr.'].apply(geocode_postnr))
+
+# Save the updated data
+data.to_excel('Ski YTD_updated.xlsx', index=False)
+print(data)
